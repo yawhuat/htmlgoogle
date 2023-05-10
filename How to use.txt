@@ -1,0 +1,21 @@
+
+How to submit data to Google Sheets using HTML form
+Connecting to the Google API and sending some data to a spreadsheet is quite difficult and time consuming. You need to create an app, manage OAuth tokens, and do a few things between the site and the Google API. With a little help from SheetDB, you can do it in less than a few minutes!
+
+To Submit and Redirect
+##########################
+<script>
+  var form = document.getElementById('sheetdb-form');
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      alert('success')
+    });
+  });
+</script>
